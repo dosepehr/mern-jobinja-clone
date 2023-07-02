@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv').config({ path: './config.env' });
 const morgan = require('morgan');
 const userRoute = require('./routes/userRoute');
-const errorHandler = require('./controllers/errorController');
+const errorController = require('./controllers/errorController');
 // ? middlewares
 const app = express();
 app.use(cors());
@@ -24,7 +24,7 @@ mongoose.Promise = global.Promise;
 // * routes
 app.use('/api/v1/users', userRoute);
 
-app.use(errorHandler);
+app.use(errorController);
 
 // * server
 const port = process.env.PORT || 5354;
