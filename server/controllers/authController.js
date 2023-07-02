@@ -1,5 +1,6 @@
 const catchAsync = require('../utils/catchAsync');
 const User = require('../models/UserModel');
+const createSendToken = require('../utils/createSendToken');
 
 exports.signup = catchAsync(async (req, res, next) => {
     const { name, email, password, confirmPassword } = req.body;
@@ -9,5 +10,6 @@ exports.signup = catchAsync(async (req, res, next) => {
         password,
         confirmPassword,
     });
-    // TODO create and send token
+    // if everything was ok,send the token
+    createSendToken(newUser, 200, res);
 });
