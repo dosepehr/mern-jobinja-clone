@@ -2,6 +2,9 @@ const catchAsync = require('../utils/catchAsync');
 const User = require('../models/UserModel');
 const createSendToken = require('../utils/createSendToken');
 const ErrorHandler = require('../utils/errorHandler');
+const { promisify } = require('util');
+const jwt=require('jsonwebtoken');
+
 exports.signup = catchAsync(async (req, res, next) => {
     const { name, email, password, confirmPassword } = req.body;
     const newUser = await User.create({
@@ -39,7 +42,7 @@ exports.protect = catchAsync(async (req, res, next) => {
         req.headers.authorization.startsWith('Bearer')
     ) {
         token = req.headers.authorization.split(' ')[1];
-    } else if (req.cookies.jwt) {
+    } else if (req.cookies?.jwt) {
         token = req.cookies.jwt;
     }
     if (!token) {
@@ -53,15 +56,6 @@ exports.protect = catchAsync(async (req, res, next) => {
         return next(
             new ErrorHandler(
                 'the user belonging to this token does no longer exist',
-                401
-            )
-        );
-    }
-    // Check if user changed password after the token was issued
-    if (currentUser.changedPasswordAfter(decoded.iat)) {
-        return next(
-            new ErrorHandler(
-                'User recently changed password! Please log in again.',
                 401
             )
         );
