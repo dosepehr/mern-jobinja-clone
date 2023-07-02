@@ -10,7 +10,7 @@ const errorHandler = require('./controllers/errorController');
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
-app.use(morgan('combined'));
+app.use(morgan('dev'));
 
 // * db
 mongoose
