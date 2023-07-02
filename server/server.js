@@ -3,11 +3,14 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv').config({ path: './config.env' });
+const morgan = require('morgan');
+const userRoute = require('./routes/userRoute');
 
 // ? middlewares
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
+app.use(morgan('combined'));
 
 // * db
 mongoose
@@ -17,6 +20,9 @@ mongoose
     })
     .catch('error in db connection');
 mongoose.Promise = global.Promise;
+
+// * routes
+app.use('/api/v1/users', userRoute);
 
 // * server
 const port = process.env.PORT || 5354;
