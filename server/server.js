@@ -6,6 +6,7 @@ const dotenv = require('dotenv').config({ path: './config.env' });
 const morgan = require('morgan');
 const userRoute = require('./routes/userRoute');
 const errorController = require('./controllers/errorController');
+const companyRouter = require('./routes/companyRoute');
 // ? middlewares
 const app = express();
 app.use(cors());
@@ -23,6 +24,7 @@ mongoose.Promise = global.Promise;
 
 // * routes
 app.use('/api/v1/users', userRoute);
+app.use('/api/v1/company', companyRouter);
 
 app.use(errorController);
 
