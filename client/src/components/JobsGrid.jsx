@@ -1,13 +1,15 @@
 import React from 'react';
 import JobBox from './JobBox';
 
-const JobsGrid = () => {
+const JobsGrid = ({ title, grid_cols }) => {
     return (
         <div className='border border-[#999] rounded-md'>
-            <div className='bg-[#ebebeb] p-4' >
-                <p>استخدام های فوری امروز</p>
+            <div className='bg-[#ebebeb] p-4'>
+                <p>{title}</p>
             </div>
-            <div className='grid grid-cols-1 gap-4 lg:grid-cols-2 px-3'>
+            <div
+                className={`grid grid-cols-1 gap-4 lg:grid-cols-${grid_cols} px-3 my-5`}
+            >
                 <JobBox />
                 <JobBox />
                 <JobBox />
@@ -18,11 +20,7 @@ const JobsGrid = () => {
                 <JobBox />
                 <JobBox />
                 <JobBox />
-                <JobBox />
-                <JobBox />
-                <JobBox />
-                <JobBox />
-                <JobBox />
+            
             </div>
         </div>
     );
