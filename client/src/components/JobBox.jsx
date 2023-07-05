@@ -2,7 +2,7 @@ import React from 'react';
 
 const JobBox = () => {
     return (
-        <div className='relative border border-[#999] p-2'>
+        <div className='relative border border-[#999] p-2  rounded-md'>
             <p className='text-mainLightBlue text-base mb-2'>
                 استخدام متخصص سئو
             </p>
