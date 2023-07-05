@@ -1,4 +1,5 @@
 import HeroSection from './components/HeroSection';
+import JobsSection from './components/JobsSection';
 import Navbar from './components/Navbar';
 
 function App() {
@@ -6,6 +7,7 @@ function App() {
         <div className='App'>
             <Navbar />
             <HeroSection />
+            <JobsSection />
         </div>
     );
 }

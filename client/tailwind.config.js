@@ -7,6 +7,7 @@ export default {
                 darkGray: '#444444',
                 lightGray: '#555555',
                 textGray: '#e5e5e5;',
+                mainLightBlue:'#3ab0e4'
             },
         },
     },
