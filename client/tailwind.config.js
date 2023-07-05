@@ -4,8 +4,9 @@ export default {
     theme: {
         extend: {
             colors: {
-                bgGray: '#444444',
-                textGray: '#555555',
+                darkGray: '#444444',
+                lightGray: '#555555',
+                textGray: '#e5e5e5;',
             },
         },
     },
