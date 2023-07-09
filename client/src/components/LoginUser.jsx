@@ -16,7 +16,7 @@ const LoginUser = () => {
                         console.log(values);
                     }}
                 >
-                    <Form className='text-lightGray border bg-white border-[#d0d0d0] p-8 mx-auto space-y-4 w-[500px] max-w-[90%]'>
+                    <Form className='text-mainLightGray border bg-white border-[#d0d0d0] p-8 mx-auto space-y-4 w-[500px] max-w-[90%]'>
                         <div>
                             <div className='flex justify-between'>
                                 <p>آدرس ایمیل</p>

@@ -2,7 +2,7 @@ import React from 'react';
 
 const JobinjaHelp = () => {
     return (
-        <div className='text-lightGray space-y-7'>
+        <div className='text-mainLightGray space-y-7'>
             <div className=''>
                 <h1 className='text-3xl inline '>
                     جابینجا چه کمکی به من میکنه؟
