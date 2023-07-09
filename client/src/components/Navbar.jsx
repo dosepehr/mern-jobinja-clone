@@ -21,12 +21,18 @@ const Navbar = () => {
                     </p>
                 </div>
                 <div className='flex text-textGray h-full items-center '>
-                    <Link className='h-full flex items-center px-4 hover:bg-lightGray duration-200' to='/join/user'>
+                    <Link
+                        className='h-full flex items-center px-4 hover:bg-lightGray duration-200'
+                        to='/join/user'
+                    >
                         ثبت نام کارجو
                     </Link>
-                    <p className='h-full flex items-center px-4 hover:bg-lightGray duration-200'>
+                    <Link
+                        className='h-full flex items-center px-4 hover:bg-lightGray duration-200'
+                        to='/login/user'
+                    >
                         ورود کارجو
-                    </p>
+                    </Link>
                     <p className='h-full flex items-center px-4 hover:bg-lightGray duration-200'>
                         jobinja
                     </p>
