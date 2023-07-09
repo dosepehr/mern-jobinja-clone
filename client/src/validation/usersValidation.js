@@ -8,4 +8,5 @@ export const loginUserShema = Yup.object().shape({
     email: Yup.string()
         .email('آدرس وارد شده صحیح نمیباشد')
         .required('ایمیل را وارد کنید'),
+    confirmPassword: Yup.string().required('رمز عبور را تکرار کنید'),
 });
