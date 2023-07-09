@@ -9,6 +9,7 @@ export default {
                 textGray: '#e5e5e5;',
                 mainLightBlue: '#3ab0e4',
                 mainGreen: '#1abc9c',
+                darkBlue: '#4367CB',
             },
             boxShadow: {
                 '3xl': '10px 9px 5px -3px rgba(0,0,0,0.1);',

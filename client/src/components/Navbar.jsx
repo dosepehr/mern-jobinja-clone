@@ -16,9 +16,12 @@ const Navbar = () => {
                     <p className='h-full flex items-center px-4 hover:bg-lightGray duration-200'>
                         50 شرکت برتر
                     </p>
-                    <p className='h-full flex items-center px-4 hover:bg-lightGray duration-200'>
+                    <Link
+                        className='h-full flex items-center px-4 hover:bg-lightGray duration-200'
+                        to='/employer'
+                    >
                         بخش کارفرمایان
-                    </p>
+                    </Link>
                 </div>
                 <div className='flex text-textGray h-full items-center '>
                     <Link
