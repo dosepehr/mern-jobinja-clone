@@ -4,10 +4,24 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { signUpUserShema } from '../validation/usersValidation';
 import { useDispatch } from 'react-redux';
 import { signupUser, getMe } from '../redux/reducers/authSlice';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 const SignupUser = () => {
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const signup = (values) => {
         dispatch(signupUser(values));
+        navigate('/');
+        toast.success('ثبت نام انجام شد', {
+            position: 'top-right',
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: 'light',
+        });
     };
     const token = localStorage.getItem('token');
     useEffect(() => {
