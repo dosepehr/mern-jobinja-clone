@@ -1,11 +1,18 @@
-import React from 'react';
+import { useEffect } from 'react';
 import JobinjaHelp from './JobinjaHelp';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { signUpUserShema } from '../validation/usersValidation';
 import { useDispatch } from 'react-redux';
-import { signupUser } from '../redux/reducers/authSlice';
+import { signupUser, getMe } from '../redux/reducers/authSlice';
 const SignupUser = () => {
     const dispatch = useDispatch();
+    const signup = (values) => {
+        dispatch(signupUser(values));
+    };
+    const token = localStorage.getItem('token');
+    useEffect(() => {
+        dispatch(getMe(token));
+    }, [token]);
     return (
         <div className='mx-auto px-5 lg:px-16 bg-[#f5f5f5] h-screen'>
             <div className='flex'>
@@ -18,7 +25,7 @@ const SignupUser = () => {
                     }}
                     validationSchema={signUpUserShema}
                     onSubmit={(values) => {
-                        dispatch(signupUser(values));
+                        signup(values);
                     }}
                 >
                     <Form className='text-mainLightGray border bg-white border-[#d0d0d0] p-8 mx-auto space-y-4 w-[500px] max-w-[90%]'>
