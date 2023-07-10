@@ -2,20 +2,23 @@ import React from 'react';
 import JobinjaHelp from './JobinjaHelp';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { signUpUserShema } from '../validation/usersValidation';
+import { useDispatch } from 'react-redux';
+import { signupUser } from '../redux/reducers/authSlice';
 const SignupUser = () => {
+    const dispatch = useDispatch();
     return (
         <div className='mx-auto px-5 lg:px-16 bg-[#f5f5f5] h-screen'>
             <div className='flex'>
                 <Formik
                     initialValues={{
-                        username: '',
+                        name: '',
                         email: '',
                         password: '',
                         confirmPassword: '',
                     }}
                     validationSchema={signUpUserShema}
                     onSubmit={(values) => {
-                        console.log(values);
+                        dispatch(signupUser(values));
                     }}
                 >
                     <Form className='text-mainLightGray border bg-white border-[#d0d0d0] p-8 mx-auto space-y-4 w-[500px] max-w-[90%]'>
@@ -37,11 +40,11 @@ const SignupUser = () => {
                             <div className='flex justify-between'>
                                 <p>نام و نام خانوادگی</p>
                                 <span className='text-red-700 text-base'>
-                                    <ErrorMessage name='username' />
+                                    <ErrorMessage name='name' />
                                 </span>
                             </div>
                             <Field
-                                name='username'
+                                name='name'
                                 className='border border-[#e5e5e5] p-2 rounded-sm mt-2 focus:shadow-3xl w-full'
                                 type='text'
                                 placeholder='مثلا: علی محمدی'

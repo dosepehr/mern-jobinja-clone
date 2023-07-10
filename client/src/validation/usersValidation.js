@@ -9,7 +9,7 @@ export const loginUserShema = Yup.object().shape({
 });
 
 export const signUpUserShema = Yup.object().shape({
-    username: Yup.string().required('نام و نام خانوادگی را وارد کنید'),
+    name: Yup.string().required('نام و نام خانوادگی را وارد کنید'),
     password: Yup.string()
         .required('رمز عبور را وارد کنید')
         .min(8, 'رمز عبور باید حداقل 8 کاراکتر باشد'),
@@ -20,7 +20,7 @@ export const signUpUserShema = Yup.object().shape({
 });
 
 export const signUpEmployer = Yup.object().shape({
-    username: Yup.string().required('نام و نام خانوادگی را وارد کنید'),
+    name: Yup.string().required('نام و نام خانوادگی را وارد کنید'),
     email: Yup.string()
         .email('آدرس وارد شده صحیح نمیباشد')
         .required('ایمیل را وارد کنید'),
