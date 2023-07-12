@@ -1,9 +1,8 @@
-import { useEffect } from 'react';
 import JobinjaHelp from './JobinjaHelp';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { signUpUserShema } from '../validation/usersValidation';
 import { useDispatch } from 'react-redux';
-import { signupUser, getMe } from '../redux/reducers/authSlice';
+import { signupUser } from '../redux/reducers/authSlice';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 const SignupUser = () => {
@@ -23,10 +22,6 @@ const SignupUser = () => {
             theme: 'light',
         });
     };
-    const token = localStorage.getItem('token');
-    useEffect(() => {
-        dispatch(getMe(token));
-    }, [token]);
     return (
         <div className='mx-auto px-5 lg:px-16 bg-[#f5f5f5] h-screen'>
             <div className='flex'>
