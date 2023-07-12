@@ -13,30 +13,12 @@ const SignupUser = () => {
             try {
                 dispatch(signupUser(values));
                 navigate('/');
-                toast.success('ثبت نام انجام شد', {
-                    position: 'top-right',
-                    autoClose: 5000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: 'light',
-                });
+                toast.success('ثبت نام انجام شد');
             } catch (err) {
                 console.log(err);
             }
         } else {
-            toast.error('رمز عبور با تکرار رمز عبور تطابق ندارد', {
-                position: 'top-right',
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: 'light',
-            });
+            toast.error('رمز عبور با تکرار رمز عبور تطابق ندارد');
         }
     };
     return (

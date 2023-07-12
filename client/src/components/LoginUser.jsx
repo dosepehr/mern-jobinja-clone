@@ -2,7 +2,21 @@ import React from 'react';
 import JobinjaHelp from './JobinjaHelp';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { loginUserShema } from '../validation/usersValidation';
+import { useDispatch } from 'react-redux';
+import { loginUser } from '../redux/reducers/authSlice';
+import { useNavigate } from 'react-router-dom';
 const LoginUser = () => {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    const loginHandler = (values) => {
+        try {
+            dispatch(loginUser(values)).unwrap();
+            navigate('/');
+        } catch (err) {
+            console.log(err);
+        }
+    };
     return (
         <div className='mx-auto px-5 lg:px-16 bg-[#f5f5f5] h-screen'>
             <div className='flex'>
@@ -13,7 +27,7 @@ const LoginUser = () => {
                     }}
                     validationSchema={loginUserShema}
                     onSubmit={(values) => {
-                        console.log(values);
+                        loginHandler(values);
                     }}
                 >
                     <Form className='text-mainLightGray border bg-white border-[#d0d0d0] p-8 mx-auto space-y-4 w-[500px] max-w-[90%]'>
