@@ -9,18 +9,35 @@ const SignupUser = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const signup = (values) => {
-        dispatch(signupUser(values));
-        navigate('/');
-        toast.success('ثبت نام انجام شد', {
-            position: 'top-right',
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: 'light',
-        });
+        if (values.password === values.confirmPassword) {
+            try {
+                dispatch(signupUser(values));
+                navigate('/');
+                toast.success('ثبت نام انجام شد', {
+                    position: 'top-right',
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: 'light',
+                });
+            } catch (err) {
+                console.log(err);
+            }
+        } else {
+            toast.error('رمز عبور با تکرار رمز عبور تطابق ندارد', {
+                position: 'top-right',
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: 'light',
+            });
+        }
     };
     return (
         <div className='mx-auto px-5 lg:px-16 bg-[#f5f5f5] h-screen'>
