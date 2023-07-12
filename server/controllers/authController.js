@@ -3,15 +3,16 @@ const User = require('../models/UserModel');
 const createSendToken = require('../utils/createSendToken');
 const ErrorHandler = require('../utils/errorHandler');
 const { promisify } = require('util');
-const jwt=require('jsonwebtoken');
+const jwt = require('jsonwebtoken');
 
 exports.signup = catchAsync(async (req, res, next) => {
-    const { name, email, password, confirmPassword } = req.body;
+    const { name, email, password, confirmPassword, mobile } = req.body;
     const newUser = await User.create({
         name,
         email,
         password,
         confirmPassword,
+        mobile,
     });
     // if everything was ok,send the token
     createSendToken(newUser, 200, res);

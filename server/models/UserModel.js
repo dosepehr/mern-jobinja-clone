@@ -22,6 +22,10 @@ const UserSchema = mongoose.Schema({
         enum: ['user', 'employer', 'admin'],
         default: 'user',
     },
+    mobile: {
+        type: String,
+        trim: true,
+    },
     password: {
         type: String,
         required: [true],
@@ -52,6 +56,14 @@ UserSchema.pre('save', async function (next) {
     this.confirmPassword = undefined;
     next();
 });
+
+UserSchema.pre('save', async function (next) {
+    if (this.mobile) {
+        this.role = 'employer';
+    }
+    next();
+});
+
 UserSchema.methods.correctPassword = async function (
     enteredPassword,
     userPassword
