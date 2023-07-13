@@ -1,8 +1,22 @@
 import React from 'react';
-import { signUpEmployer } from '../validation/usersValidation';
+import { signUpEmployerSchema } from '../validation/usersValidation';
 import { Formik, Field, ErrorMessage, Form } from 'formik';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { signupUser } from '../redux/reducers/authSlice';
+import { toast } from 'react-toastify';
 const SignupEmployer = () => {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const signupEmployerHandler = (values) => {
+        try {
+            dispatch(signupUser(values));
+            navigate('/');
+            toast.success('ثبت نام انجام شد');
+        } catch (err) {
+            console.log(err);
+        }
+    };
     return (
         <div className='min-h-screen bg-[#f5f5f5] pb-10'>
             <nav className='bg-mainDarkBlue h-20 flex justify-between items-center px-4 py-2 lg:px-32 shadow-lg'>
@@ -23,15 +37,15 @@ const SignupEmployer = () => {
                 </p>
                 <Formik
                     initialValues={{
-                        username: '',
+                        name: '',
                         email: '',
-                        phone: '',
+                        mobile: '',
                         password: '',
                         confirmPassword: '',
                     }}
-                    validationSchema={signUpEmployer}
+                    validationSchema={signUpEmployerSchema}
                     onSubmit={(values) => {
-                        console.log(values);
+                        signupEmployerHandler(values);
                     }}
                 >
                     <Form className='bg-white shadow-xl mx-auto w-[400px] max-w-[90%] mt-10 p-8 space-y-5 rounded-lg'>
@@ -41,13 +55,13 @@ const SignupEmployer = () => {
                             </p>
                             <Field
                                 type='text'
-                                name='username'
+                                name='name'
                                 id=''
                                 placeholder='مثلا: علی محمدی'
                                 className='border border-[#e5e5e5] px-3 py-2 rounded-sm'
                             />
                             <span className='text-red-600 text-sm'>
-                                <ErrorMessage name='username' />
+                                <ErrorMessage name='name' />
                             </span>
                         </div>
                         <div className='flex flex-col justify-start'>
@@ -67,13 +81,13 @@ const SignupEmployer = () => {
                                 شماره موبایل
                             </p>
                             <Field
-                                name='phone'
+                                name='mobile'
                                 type='text'
                                 placeholder='09123456789'
                                 className='border border-[#e5e5e5] px-3 py-2 rounded-sm'
                             />
                             <span className='text-red-600 text-sm'>
-                                <ErrorMessage name='phone' />
+                                <ErrorMessage name='mobile' />
                             </span>
                         </div>
                         <div className='flex flex-col justify-start'>

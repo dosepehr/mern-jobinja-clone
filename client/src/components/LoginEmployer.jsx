@@ -1,7 +1,19 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Form, Formik, ErrorMessage, Field } from 'formik';
-import { loginUserShema } from '../validation/usersValidation';
+import { loginUserSchema } from '../validation/usersValidation';
+import { useDispatch } from 'react-redux';
+import { loginUser } from '../redux/reducers/authSlice';
 const LoginEmployer = () => {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const loginHandler = (values) => {
+        try {
+            dispatch(loginUser(values)).unwrap();
+            navigate('/');
+        } catch (err) {
+            console.log(err);
+        }
+    };
     return (
         <div className='min-h-screen bg-[#f5f5f5] pb-10'>
             <nav className='bg-mainDarkBlue h-20 flex justify-between items-center px-4 py-2 lg:px-32 shadow-lg'>
@@ -25,9 +37,9 @@ const LoginEmployer = () => {
                         email: '',
                         password: '',
                     }}
-                    validationSchema={loginUserShema}
+                    validationSchema={loginUserSchema}
                     onSubmit={(values) => {
-                        console.log(values);
+                        loginHandler(values);
                     }}
                 >
                     <Form className='bg-white shadow-xl mx-auto w-[400px] max-w-[90%] mt-10 p-8 space-y-5 rounded-lg'>

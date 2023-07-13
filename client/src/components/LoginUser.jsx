@@ -1,7 +1,7 @@
 import React from 'react';
 import JobinjaHelp from './JobinjaHelp';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { loginUserShema } from '../validation/usersValidation';
+import { loginUserSchema } from '../validation/usersValidation';
 import { useDispatch } from 'react-redux';
 import { loginUser } from '../redux/reducers/authSlice';
 import { useNavigate } from 'react-router-dom';
@@ -25,7 +25,7 @@ const LoginUser = () => {
                         email: '',
                         password: '',
                     }}
-                    validationSchema={loginUserShema}
+                    validationSchema={loginUserSchema}
                     onSubmit={(values) => {
                         loginHandler(values);
                     }}
